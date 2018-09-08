@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 
 public class Practice03Test {
@@ -54,13 +55,38 @@ public class Practice03Test {
 
 	public int find_min_iterative () {
 		// TODO: Fill in this iterative function.
-	}
 
+		int min = 0;
+
+		for (int i = 1; i < this.arr.length; i++){
+			if (this.arr[i] < arr[min]){
+				min = i;
+			}
+		}
+
+		return (min);
+	}
 
 	public int find_min_recursive () {
 		// TODO: Fill in this recursive function.
+		return find_min_recursive(this.arr);
 	}
 
+	public int find_min_recursive(double[] arz){
+		if (arz.length == 1){
+			
+			return(0);
+
+		} else if (arz[0] <= arz[arz.length -1]){
+			
+			return(find_min_recursive(Arrays.copyOfRange(arz, 0, arz.length -1)));
+		
+		} else {		
+
+			return(1 + find_min_recursive(Arrays.copyOfRange(arz, 1, arz.length )));
+		}
+
+	}
 
 	/**
 	 * print_min: determines the min iteratively and recursively.
